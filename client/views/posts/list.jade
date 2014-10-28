@@ -1,0 +1,40 @@
+h2 Posts
+
+div(ng-controller='PostsCtrl')
+  
+  .msg.success(ng-show="action && registry")
+    p Well done! {{registry}} was {{action}} with success :)
+
+  .row
+    a(ng-href='/posts/add{{filters}}') Add
+
+  form(ng-submit='search()', ng-show='data.length > 0 || searched')
+            
+    .row
+      label Title
+      input(type='text', ng-model='search.title')
+      button Search
+
+  div(ng-show='data.length == 0 && searched')
+    p Your search did not match any posts.
+
+  div(ng-show='data.length > 0')
+
+    <list-controls></list-controls>
+  
+    .row
+      table
+        thead
+          tr
+            th(ng-click="orderBy('title')") Title
+            th(ng-click="orderBy('description')") Description
+            th Actions
+        tbody
+          tr(ng-repeat="post in data")
+            td(data-th='Title') {{post.title}}
+            td(data-th='Description') {{post.description}}
+            td(data-th='Actions')
+              a(ng-href='/posts/edit/{{post.id + filters}}', title='{{post.title}}') Edit
+              a(href='', ng-click='remove(post)', title='{{post.title}}') Dlete
+
+    <list-controls></list-controls>

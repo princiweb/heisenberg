@@ -1,0 +1,31 @@
+p {{from+1}} - {{to}} de {{totalRows}}
+
+span.box Rows per page
+  select.registers(ng-change='updateRowsPerPage(rowsPerPage)', ng-model='rowsPerPage')
+    option 20
+    option 40
+    option 100
+    option 200
+
+nav.hb-pagination
+  ul
+    li.first(ng-show='currentPage > 1')
+      a(ng-click='changePage(1)') <<
+
+    li.previous(ng-show='currentPage > 1')
+      a(ng-click='changePage(currentPage - 1)') <
+
+    li.number(ng-repeat='number in range(currentPage - 4, currentPage - 1, totalPages)')
+      a(ng-click='changePage(number)') {{number}}
+
+    li.number
+      a {{currentPage}}
+      
+    li.number(ng-repeat='number in range(currentPage + 1, currentPage + 4, totalPages)')
+      a(ng-click='changePage(number)') {{number}}
+
+    li.next(ng-show='(currentPage + 1) <= totalPages')
+      a(ng-click='changePage(currentPage + 1)') >
+
+    li.last(ng-show='currentPage < totalPages')
+      a(ng-click='changePage(totalPages)') >>

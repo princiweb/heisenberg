@@ -1,0 +1,10 @@
+{
+  "name": "heisenberg",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "~1.2.21",
+    "angular-route": "~1.2.21",
+    "jquery": "1",
+    "requirejs": "~2.1.14"
+  }
+}

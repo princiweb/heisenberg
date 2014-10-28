@@ -1,0 +1,14 @@
+extends layout
+
+block body
+  h1
+    a(href='/') Heisenberg
+
+  nav
+    ul
+      li
+        a(href='/posts/list') Posts
+
+  section(ng-view)
+
+  script(src='/scripts/vendor/require.js', data-main='/scripts/bootstrap')
