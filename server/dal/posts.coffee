@@ -8,7 +8,7 @@ class Posts
       
       request.input 'id', sql.Int, id
 
-      request.query 'select id, title, description from posts where id = @id', (err, recordset) -> 
+      request.query 'select id, title, description from posts where id = @id', (err, recordset) ->
         done recordset[0]
 
   getAllPaginated: (from, to, orderByColumn, orderByDir, search, done) ->
@@ -19,11 +19,11 @@ class Posts
 
       unless search.title is ''
         request.input 'title', sql.VarChar, "%#{search.title}%"
-        sqlCmd += " where title like @title"  
+        sqlCmd += " where title like @title"
 
       sqlCmd +=  " order by #{orderByColumn} #{orderByDir} offset #{from} rows fetch next #{to} rows only"
       
-      request.query sqlCmd, (err, recordset) -> 
+      request.query sqlCmd, (err, recordset) ->
         if err is undefined
           done undefined, recordset
         else
@@ -39,7 +39,7 @@ class Posts
       request.query 'insert into posts (title, description) output inserted.id values (@title, @description)', (err, recordset) ->
         if err is undefined
           done err, recordset[0]["id"]
-        else        
+        else
           done err
       return
     return

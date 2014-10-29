@@ -20,4 +20,3 @@ require.config
 
 require ['app'], (app) ->
   angular.bootstrap document, ['app']
-  return

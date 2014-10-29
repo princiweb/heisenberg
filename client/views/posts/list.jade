@@ -30,11 +30,11 @@ div(ng-controller='PostsCtrl')
             th(ng-click="orderBy('description')") Description
             th Actions
         tbody
-          tr(ng-repeat="post in data")
+          tr(ng-repeat='post in data')
             td(data-th='Title') {{post.title}}
             td(data-th='Description') {{post.description}}
             td(data-th='Actions')
               a(ng-href='/posts/edit/{{post.id + filters}}', title='{{post.title}}') Edit
-              a(href='', ng-click='remove(post)', title='{{post.title}}') Dlete
+              a(href='', ng-click='remove(post)', title='{{post.title}}') Delete
 
     <list-controls></list-controls>

@@ -13,7 +13,9 @@ define ['app'], (app) ->
 
       $scope.orderBy = (column) ->
         $scope.orderByDir = if $scope.orderByDir is 'desc' then 'asc' else 'desc'
-        $location.search('orderByDir', $scope.orderByDir).search('orderByColumn', column)
+        $location
+          .search 'orderByDir', $scope.orderByDir
+          .search 'orderByColumn', column
 
       $scope.range = (from, to, max) ->
         input = []
@@ -27,7 +29,7 @@ define ['app'], (app) ->
         input
 
       $scope.updateRowsPerPage = (quantity) ->
-        $location.search('rowsPerPage', quantity)
+        $location.search 'rowsPerPage', quantity
 
       $scope.changePage = (page) ->
-        $location.search('currentPage', page)
+        $location.search 'currentPage', page

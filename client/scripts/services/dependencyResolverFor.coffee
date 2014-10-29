@@ -8,9 +8,6 @@ define [], ->
         require dependencies, ->
           $rootScope.$apply ->
             deferred.resolve()
-            return
-
-          return
 
         return deferred.promise
     ]

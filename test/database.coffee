@@ -1,4 +1,4 @@
-module.exports = 
+module.exports =
   configConn:
     user: 'username',
     password: 'password',

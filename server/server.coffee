@@ -21,7 +21,7 @@ app = module.exports = express()
 assetsPath = path.join(__dirname, '..', '_public')
 
 # all environments
-app.use morgan('dev')
+app.use morgan 'dev'
 app.use bodyParser.json()
 app.use bodyParser.urlencoded(extended: true)
 app.use methodOverride()
@@ -55,7 +55,6 @@ nocache = (req, res, next) ->
   res.header 'Pragma', 'no-cache'
   res.header 'Expires', 0
   next()
-  return
 
 api = {}
 
@@ -75,6 +74,6 @@ app.get '*', (req, res) -> res.sendfile "#{assetsPath}/views/index.html"
 #
 
 module.exports.start = (port) ->
-  app.set "port", port
+  app.set 'port', port
   http.createServer(app).listen port, ->
-    console.log "Yeah " + "Bitch".blue + ", server listening port " + port + "\n      Livereload proxying to port " + "3000".green
+    console.log "Yeah " + "Bitch".blue + ", server listening port #{port}\nLivereload proxying to port " + "3000".green
