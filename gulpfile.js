@@ -7,7 +7,7 @@ var gulp        = require('gulp'),
     browserSync = require('browser-sync');
 
 gulp.task('server', function () {
-  nodemon({ script: './server/start-server.coffee', ext: 'coffee'})
+  nodemon({ script: './server/start-server.coffee', ext: 'coffee', ignore: ['client/**'] });
 });
 
 gulp.task('template', function(){
@@ -35,12 +35,12 @@ gulp.task('vendor', function() {
 
 gulp.task('coffee', function() {
   gulp.src('./client/scripts/**/*.coffee')
-    .pipe(changed('./_public/scripts'))
+    .pipe(changed('./_public/scripts', { extension: '.js' }))
     .pipe(coffee({bare: true}).on('error', function(err) {}))
     .pipe(gulp.dest('./_public/scripts'));
   
   gulp.src('./server/**/*.coffee')
-    .pipe(changed('./_server'))
+    .pipe(changed('./_server', { extension: '.js' }))
     .pipe(coffee({bare: true}).on('error', function(err) {}))
     .pipe(gulp.dest('./_server'));
 });
