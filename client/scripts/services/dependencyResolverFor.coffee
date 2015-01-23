@@ -11,4 +11,5 @@ define [], ->
 
         return deferred.promise
     ]
-    definition
+    
+    return definition

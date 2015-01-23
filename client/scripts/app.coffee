@@ -25,6 +25,8 @@ define [
           resolve: dependencyResolverFor(route.dependencies)
           reloadOnSearch: false
 
-      $routeProvider.otherwise redirectTo: config.defaultRoutePaths  if config.defaultRoutePaths isnt undefined
+      if config.defaultRoutePaths isnt undefined
+        $routeProvider.otherwise redirectTo: config.defaultRoutePaths
   ]
+  
   return app

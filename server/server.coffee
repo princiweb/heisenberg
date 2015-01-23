@@ -67,7 +67,7 @@ app.delete  '/api/post/:id', api.post.delete
 app.get     '/api/*',        (req, res) -> res.status(404).end()
 
 # serve index for all other routes
-app.get '*', (req, res) -> res.sendfile "#{assetsPath}/views/index.html"
+app.get '*', (req, res) -> res.sendFile "#{assetsPath}/views/index.html"
 
 #
 # Start Server

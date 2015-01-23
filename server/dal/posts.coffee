@@ -31,8 +31,8 @@ class Posts
             order by #{orderByColumn} #{orderByDir}
             offset #{from} rows fetch next #{to} rows only"
       
-      request.query sqlCmd, (err, recordset) ->
-        done cmd, recordset
+      request.query cmd, (err, recordset) ->
+        done err, recordset
 
   save: (post, done) ->
     sql.connect configConn, (err) ->

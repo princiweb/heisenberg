@@ -1,16 +1,16 @@
 p All fields marked with an asterisk (*) are required.
 
-form(name='form', ng-submit='validate(form.$valid)', novalidate, data-form-validate)
+form(name='form', data-ng-submit='validate(form.$valid)', novalidate, data-form-validate)
 
   .row
-    label(ng-class='{ "error" : (form.title.$invalid && !form.title.$pristine) || (submitted && form.title.$invalid) }') Title *
-    input(type='text', name='title', ng-model='post.title', required)
-    small(ng-show='(form.title.$invalid && !form.title.$pristine) || (submitted && form.title.$invalid)') Title is required.
+    label(data-ng-class='{ "error" : (form.title.$invalid && !form.title.$pristine) || (submitted && form.title.$invalid) }') Title *
+    input(type='text', name='title', data-ng-model='post.title', required)
+    small(data-ng-show='(form.title.$invalid && !form.title.$pristine) || (submitted && form.title.$invalid)') Title is required.
 
   .row
-    label(ng-class='{ "error" : (form.description.$invalid && !form.description.$pristine) || (submitted && form.description.$invalid) }') Description *
-    textarea.bigger-el(name='description', ng-model='post.description', required)
-    small(ng-show='(form.description.$invalid && !form.description.$pristine) || (submitted && form.description.$invalid)') Description is required.
+    label(data-ng-class='{ "error" : (form.description.$invalid && !form.description.$pristine) || (submitted && form.description.$invalid) }') Description *
+    textarea.bigger-el(name='description', data-ng-model='post.description', required)
+    small(data-ng-show='(form.description.$invalid && !form.description.$pristine) || (submitted && form.description.$invalid)') Description is required.
 
   .row
-    button(ng-disabled='isDisabled') Submit
+    button(data-ng-disabled='isDisabled') Submit

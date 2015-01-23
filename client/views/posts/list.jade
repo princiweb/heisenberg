@@ -1,24 +1,24 @@
 h2 Posts
 
-div(ng-controller='PostsCtrl')
+div(data-ng-controller='PostsCtrl')
   
-  .msg.success(ng-show="action && registry")
+  .msg.success(data-ng-show="action && registry")
     p Well done! {{registry}} was {{action}} with success :)
 
   .row
-    a(ng-href='/posts/add{{filters}}') Add
+    a(data-ng-href='/posts/add{{filters}}') Add
 
-  form(ng-submit='search()', ng-show='data.length > 0 || searched')
+  form(data-ng-submit='search()', data-ng-show='data.length > 0 || searched')
             
     .row
       label Title
-      input(type='text', ng-model='search.title')
+      input(type='text', data-ng-model='search.title')
       button Search
 
-  div(ng-show='data.length == 0 && searched')
+  div(data-ng-show='data.length == 0 && searched')
     p Your search did not match any posts.
 
-  div(ng-show='data.length > 0')
+  div(data-ng-show='data.length > 0')
 
     <list-controls></list-controls>
   
@@ -26,15 +26,15 @@ div(ng-controller='PostsCtrl')
       table
         thead
           tr
-            th(ng-click="orderBy('title')") Title
-            th(ng-click="orderBy('description')") Description
+            th(data-ng-click="orderBy('title')") Title
+            th(data-ng-click="orderBy('description')") Description
             th Actions
         tbody
-          tr(ng-repeat='post in data')
+          tr(data-ng-repeat='post in data')
             td(data-th='Title') {{post.title}}
             td(data-th='Description') {{post.description}}
             td(data-th='Actions')
-              a(ng-href='/posts/edit/{{post.id + filters}}', title='{{post.title}}') Edit
-              a(href='', ng-click='remove(post)', title='{{post.title}}') Delete
+              a(data-ng-href='/posts/edit/{{post.id + filters}}', title='{{post.title}}') Edit
+              a(href='', data-ng-click='remove(post)', title='{{post.title}}') Delete
 
     <list-controls></list-controls>

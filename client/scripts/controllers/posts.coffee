@@ -28,13 +28,18 @@ define ['app'], (app) ->
 
         $scope.rowsPerPage = $location.search().rowsPerPage ?= 20
         $scope.currentPage = $location.search().currentPage ?= 1
-        $scope.from = ($scope.currentPage * $scope.rowsPerPage) - $scope.rowsPerPage
+        $scope.from = ($scope.currentPage - 1) * $scope.rowsPerPage
 
         orderByColumn = $location.search().orderByColumn ?= 'id'
         orderByDir = $location.search().orderByDir ?= 'desc'
 
-        posts.getAllPaginated($scope.from, $scope.rowsPerPage, orderByColumn, orderByDir, $scope.search)
-          .success (posts) -> $scope.data = posts
+        posts.getAllPaginated(
+          $scope.from
+          $scope.rowsPerPage
+          orderByColumn
+          orderByDir
+          $scope.search)
+        .success (posts) -> $scope.data = posts
 
       $scope.loadData()
   ]
