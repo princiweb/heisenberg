@@ -1,6 +1,6 @@
-Post = require '../models/post'
+Post  = require '../models/post'
 posts = new (require '../dal/posts')
-url = require 'url'
+url   = require 'url'
 
 # GET
 exports.posts = (req, res) ->
@@ -8,19 +8,29 @@ exports.posts = (req, res) ->
   query = url_parts.query
   search = {}
 
-  search.title = if query.title isnt undefined then query.title else ''
+  search.title = query.title ?= ''
 
-  posts.getAllPaginated query.from, query.to, query.orderByColumn, query.orderByDir, search, (err, posts) ->
-    if err is undefined
-      res.json posts
-    else
-      res.status(500).send(err)
+  posts.getAllPaginated(
+    query.from
+    query.to
+    query.orderByColumn
+    query.orderByDir
+    search
+    (err, posts) ->
+      if err is undefined
+        res.json posts
+      else
+        res.status(500).send(err)
+    )
 
 exports.post = (req, res) ->
   id = req.params.id
 
-  posts.getById id, (data) ->
-    res.json data
+  posts.getById id, (err, data) ->
+    if err is undefined
+      res.json data[0]
+    else
+      res.status(500).send(err)
 
 # POST
 exports.add = (req, res) ->
@@ -41,7 +51,7 @@ exports.edit = (req, res) ->
     if err is undefined
       res.json post
     else
-      res.send 500, err
+      res.status(500).send(err)
 
 # DELETE
 exports.delete = (req, res) ->
@@ -51,4 +61,4 @@ exports.delete = (req, res) ->
     if err is undefined
       res.json true
     else
-      res.send 500, err
+      res.status(500).send(err)
