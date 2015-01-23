@@ -2,7 +2,7 @@
   "name": "heisenberg",
   "version": "0.0.1",
   "scripts": {
-    "start": "gulp",
+    "start": "node _server/start-server.js",
     "test": "./node_modules/.bin/mocha --recursive test/"
   },
   "dependencies": {
