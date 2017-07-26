@@ -50,7 +50,7 @@ Now run `gulp` and your app is ready to use! :)
 
 ## Running the tests
 
-Get [Mocha](http://visionmedia.github.io/mocha/):
+Get [Mocha](http://mochajs.org/):
 
 ```
 npm install -g mocha
